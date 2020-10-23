@@ -2,15 +2,18 @@ package com.my.trips.controller;
 
 import com.my.trips.model.Trip;
 import com.my.trips.service.ITripService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+
+import static java.lang.String.format;
 
 @RestController
 @CrossOrigin()
+@Slf4j
 public class TripController {
 
     @Autowired
@@ -18,7 +21,26 @@ public class TripController {
 
     @GetMapping("/trips")
     public List<Trip> getTrips() {
-        var cities = (List<Trip>) tripService.findAll();
-        return cities;
+        return tripService.getTrips();
+    }
+
+    @GetMapping("/trips/{id}")
+    public Trip getTrips(@PathVariable Long id) {
+        log.info("Get Trip by id: {}", id);
+        return tripService
+                .getTrips(id)
+                .orElseThrow(() -> new EntityNotFoundException(format("Trip id %s does not exist", id)));
+    }
+
+    @PostMapping("/trips")
+    public Trip createTrip(@RequestBody Trip trip) {
+        log.info("Save new Trip: {}", trip.toString());
+        return tripService.save(trip);
+    }
+
+    @DeleteMapping("/trips/{id}")
+    void deleteTip(@PathVariable Long id) {
+        log.info("Delete Trip id: {}", id);
+        tripService.deleteById(id);
     }
 }
