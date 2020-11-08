@@ -22,7 +22,7 @@ public class EntityTest {
 
     private final String localHost = "http://localhost:8080";
     private final String tripPath = "/trips";
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
 
     @Test
