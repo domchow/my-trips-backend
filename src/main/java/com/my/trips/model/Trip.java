@@ -1,5 +1,6 @@
 package com.my.trips.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,10 +11,11 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "trip")
 @NoArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String City;
     private LocalDate date;
