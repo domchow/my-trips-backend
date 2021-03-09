@@ -14,4 +14,6 @@ public interface ITripService {
     Trip save(Trip trip);
 
     void deleteById(long id);
+
+    void updateById(long id, Trip trip);
 }

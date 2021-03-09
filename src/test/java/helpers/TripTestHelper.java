@@ -19,6 +19,6 @@ public class TripTestHelper {
     }
 
     public static Trip getTestTrip(int index) {
-        return Trip.of(null, format("TestCity_%s", index), LocalDate.now().plusDays(index));
+        return Trip.of(null, format("TestCity_%s", index), LocalDate.now().plusDays(index), "TestDescription");
     }
 }

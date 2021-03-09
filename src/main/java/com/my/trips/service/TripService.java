@@ -33,4 +33,9 @@ public class TripService implements ITripService {
     public void deleteById(long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public void updateById(long id, Trip trip) {
+        repository.setTripInfoById(trip.getCity(), trip.getDate(), trip.getDescription(), id);
+    }
 }

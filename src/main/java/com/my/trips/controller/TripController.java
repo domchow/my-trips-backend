@@ -43,4 +43,10 @@ public class TripController {
         log.info("Delete Trip id: {}", id);
         tripService.deleteById(id);
     }
+
+    @PutMapping("/trips/{id}")
+    void updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
+        log.info("Update Trip id: {}, body: {}", id, trip.toString());
+        tripService.updateById(id, trip);
+    }
 }
