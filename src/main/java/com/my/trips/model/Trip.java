@@ -19,4 +19,5 @@ public class Trip {
     private Long id;
     private String City;
     private LocalDate date;
+    private String description;
 }
