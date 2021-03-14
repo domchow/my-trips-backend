@@ -1,25 +1,28 @@
 version: '3'
 services:
+
   database:
     image: "postgres"
     env_file:
       - database.env # configure postgres
     volumes:
       - database-data:/var/lib/postgresql/data/
-    networks:
-      - spring-cloud-network
-
-  mytrip-backend:
-    image: "domchowit/mytrip-backend"
-    expose:
-        - 8080
     ports:
-        - 8080:8080
-    depends_on:
-        - database
-    networks:
-        - spring-cloud-network
-        - client-server-network
+      - "5432:5432"
+
+#    networks:
+#      - spring-cloud-network
+  #  mytrip-backend:
+#    image: "domchowit/mytrip-backend"
+#    expose:
+#        - 8080
+#    ports:
+#        - 8080:8080
+#    depends_on:
+#        - database
+#    networks:
+#        - spring-cloud-network
+#        - client-server-network
 
   mytrip-client:
     image: "domchowit/mytrip-client"
