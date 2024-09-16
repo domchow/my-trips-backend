@@ -12,7 +12,7 @@ import java.util.List;
 import static java.lang.String.format;
 
 @RestController
-@CrossOrigin()
+@CrossOrigin
 @Slf4j
 public class TripController {
 

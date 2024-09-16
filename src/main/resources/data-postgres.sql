@@ -1,3 +1,4 @@
+INSERT INTO users(name, password, roles, active ) VALUES('user', 'pass', 'USER', true);
 INSERT INTO trip(city, date) VALUES('Bratislava', '2020-04-06');
 INSERT INTO trip(city, date) VALUES('Budapest', '2020-04-06');
 INSERT INTO trip(city, date) VALUES('Dubrovnik', '2020-04-06');
